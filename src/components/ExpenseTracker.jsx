@@ -55,7 +55,7 @@ export default function ExpenseTracker({ categories }) {
               <span>{categories.find(c => c.id === i.category_id)?.name || 'Unknown'}</span>
               <span className="text-blue-200/70 text-sm">{i.note}</span>
             </div>
-            <div className="font-semibold">${'{'}i.amount{'}'}</div>
+            <div className="font-semibold">${typeof i.amount === 'number' ? i.amount.toFixed(2) : i.amount}</div>
           </li>
         ))}
       </ul>

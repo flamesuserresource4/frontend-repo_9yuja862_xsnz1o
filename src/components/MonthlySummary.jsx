@@ -41,7 +41,7 @@ export default function MonthlySummary({ categories }) {
                     <span className="text-xl">{c.emoji || '🗂️'}</span>
                     <span>{c.name}</span>
                   </div>
-                  <div className="text-sm text-blue-200">${'{'}c.spent{'}'} / ${'{'}c.target{'}'}</div>
+                  <div className="text-sm text-blue-200">${typeof c.spent === 'number' ? c.spent.toFixed(2) : c.spent} / ${typeof c.target === 'number' ? c.target.toFixed(2) : c.target}</div>
                 </div>
                 <div className="mt-2 h-2 w-full bg-slate-700 rounded-full overflow-hidden">
                   {c.progress !== null ? (
@@ -60,10 +60,11 @@ export default function MonthlySummary({ categories }) {
 }
 
 function Stat({ label, value }) {
+  const display = typeof value === 'number' ? value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : value;
   return (
     <div className="bg-slate-900/40 border border-slate-700 rounded-lg p-3 text-white">
       <div className="text-blue-200 text-sm">{label}</div>
-      <div className="text-2xl font-semibold">${'{'}Number(value||0).toLocaleString(){'}'}</div>
+      <div className="text-2xl font-semibold">${display}</div>
     </div>
   );
 }
