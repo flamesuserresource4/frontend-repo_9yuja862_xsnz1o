@@ -12,7 +12,8 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950">
       <Hero />
 
-      <main className="relative z-10 container mx-auto px-6 pt-10 pb-24">
+      {/* Main content spaced clearly below the hero */}
+      <main className="relative z-10 container mx-auto px-6 pt-16 pb-28">
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-1 space-y-6">
             <CategoryManager onChange={setCategories} />
